@@ -7,7 +7,7 @@ name = "pypi"
 django = "*"
 requests = "*"
 pandas = "*"
-httpstan = "*"
+pystan = "*"
 prophet = "*"
 
 [dev-packages]

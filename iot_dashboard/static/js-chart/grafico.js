@@ -116,22 +116,20 @@ function renderizarGraficos() {
 }
 
 // createElementChart('chart112');
-
+function atualizarDados() {
+  console.log("Chamou!");
+  fetch(`http://127.0.0.1:8000/getData`)
+    .then(function (response) {
+      console.log(response.json());
+      renderizarGraficos();
+    }).catch(function (err) {
+      console.log(err)
+    });
+}
 window.onload = function () {
-
+  atualizarDados();
   renderizarGraficos();
 
-  let timeOut = setInterval(function () {
-    fetch(`http://127.0.0.1:8000/getData`)
-      .then(function (response) {
-        console.log(response.json());
-        renderizarGraficos();
-      }).catch(function (err) {
-        console.log(err)
-      });
-  }, 300000);
-
-  // let chart02 = createGraph('2', 'chart112', 'Titulo', 'Temperatura');
-
-  // chart02.render();
+  let timeOut = setInterval(atualizarDados, 300000);
+  
 }

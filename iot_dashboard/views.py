@@ -24,15 +24,6 @@ def getData(request):
     tratandoOsDados(channelId, '4', numResults)
     return HttpResponse({'status': 'ok'})
 
-
-# def getTemperaturePrevision(request):
-#     fieldNumber = request.GET.get("id", '1')
-    
-#     channelId = '196384'
-#     numResults = '1500'
-#     tratandoOsDados(channelId, fieldNumber, numResults)
-#     return HttpResponse({'status': 'ok'})
-
 def getJson(request):
     id = request.GET.get("id", '1')
     prev = request.GET.get("prev", '0')
@@ -98,13 +89,11 @@ def convertCsvToJson(nomeDoArquivo):
                                   for i in range(len(field))}])
             convert_write_json(csv_rows, json_file)
 
-    # Convert csv data into json
-
     def convert_write_json(data, json_file):
         with open(json_file, "w") as f:
             f.write(json.dumps(data, sort_keys=False, indent=4,
-                               separators=(',', ': ')))  # for pretty
-            # f.write(json.dumps(data))
+                               separators=(',', ': '))) 
+
 
     read_CSV(file, json_file)
 
